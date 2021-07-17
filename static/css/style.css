@@ -1,0 +1,47 @@
+*{
+    margin :0px;
+    padding:0px;
+    box-sizing: border-box;
+    font-size:25px; 
+    font-family: 'Sriracha',cursive;
+    
+}
+
+.container
+{
+    max-width:80%;
+    background-color: grey;
+    padding: 34px;
+    margin: 23px;
+}
+
+.btn
+{
+	background-color:yellowgreen;
+	padding:20px;
+	padding-bottom:0px;
+	border-color:black;
+	border-width:2px;       
+	border-style:solid;     
+	border-radius:10px;
+    margin-top:50px;  
+    margin:25px; 
+    font-size:25px;  
+    font-family:helvetica;          
+}
+
+.home
+{
+    background-color: grey;
+    max-width:80%;
+    padding: 34px;
+    margin: 23px;     
+}
+
+h2,p{
+    text-align: center;
+    
+}
+.box{
+    padding: 34px;
+}

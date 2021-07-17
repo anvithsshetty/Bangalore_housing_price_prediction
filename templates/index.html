@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BANGALORE HOUSING PRICE PREDICTION MODEL</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+
+</head>
+<body class="bg-dark">
+  <div class="container">
+    <h3>BANGALORE HOUSING PRICE PREDICTION MODEL</h3>
+    <p>Fill the following imformation.</p>
+    
+    <form accept-charset="utf-8">
+      <div class:"box">
+      <label><b> Select Locations </b></label>
+      <select class="selectpicker form-control" id="location" name="location" required="1">
+        {% for location in locations %}
+        <option value="{{location}}">{{location}}</option>
+        {% endfor %}
+      </select></div>
+      <input type="text" name="bath" id="bath" placeholder="Bathroom">
+      <input type="text" name="BHK" id="BHK" placeholder="ENTER BHK">
+      <input type="text" name="sqft" id="sqft" placeholder="ENTER Square Feet"> 
+
+    </br>
+    <button type="button" class="btn" onclick="send_data()">Predict Price</button>
+    
+    
+    </form></div>
+    <br>
+    <center>
+      <h2>{{prediction_text}}</h2> 
+    </center>
+
+    <div class="col-md-12" style="text-align: center">
+      <h3><span id="prediction"></span></h3>
+      </div>
+    
+      
+  </body>
+  <script>
+    
+    
+    function form_handler(event){
+      // event.preventdefault();
+    }
+    async function send_data()  {
+
+      console.log("HELLO");
+      
+      var fd=new FormData(document.querySelector('form'))
+      var xhr = new XMLHttpRequest();
+      await xhr.open('POST', 'predict', true)
+
+      xhr.onreadystatechange=function(){
+        if(xhr.readyState==XMLHttpRequest.DONE){
+          document.getElementById('prediction').innerHTML="Prediction: Rs "+ xhr.responseText + " lakhs";
+        }
+      };
+
+      xhr.onload=function(){};
+      xhr.send(fd);
+      console.log("BYE");
+
+    }
+  </script>
+
+
+</html>
